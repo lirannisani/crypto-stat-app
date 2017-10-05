@@ -1,0 +1,30 @@
+﻿<ion-header>
+    <ion-navbar no-border-bottom>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Coins2</ion-title>
+    </ion-navbar>
+
+    <ion-toolbar no-border-top>
+        <!--<ion-searchbar [(ngModel)]="queryText" (input)="searchCoin($event)" (cancel)="onCancelSearchbar($event)" (clear)="onClearSearchbar($event)"></ion-searchbar>-->
+        <ion-searchbar color="primary"
+                       [(ngModel)]="queryText"
+                       (ionInput)="searchCoin()"
+                       placeholder="Search">
+        </ion-searchbar>
+    </ion-toolbar>
+</ion-header>>
+
+<ion-content class="outer-content speaker-list">
+    <ion-grid fixed>
+
+        <ion-row wrap *ngFor="let coin of coins">
+
+            <ion-col width-25> {{ coin.name }}</ion-col>
+            <ion-col width-25> {{ coin.volume }}</ion-col>
+            <ion-col col-25> <button ion-button small color="danger" (click)="gotoDetails(res)"> Details</button></ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

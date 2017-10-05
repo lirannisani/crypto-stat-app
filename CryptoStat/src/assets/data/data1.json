@@ -1,0 +1,41 @@
+{
+  "coins": [
+    {
+    "name": "Bitcoin",
+    "volume": "$64,392,735,823"
+     },
+	  {
+    "name": "Ethereum",
+    "volume": "$27,015,785,253"
+     },
+	  {
+    "name": "Ripple",
+    "volume": "$6,939,468,504"
+     },
+	    {
+    "name": "Bitcoin",
+    "volume": "$64,392,735,823"
+     },
+	  {
+    "name": "Ethereum",
+    "volume": "$27,015,785,253"
+     },
+	  {
+    "name": "Ripple",
+    "volume": "$6,939,468,504"
+     },
+	    {
+    "name": "Bitcoin",
+    "volume": "$64,392,735,823"
+     },
+	  {
+    "name": "Ethereum",
+    "volume": "$27,015,785,253"
+     },
+	  {
+    "name": "Ripple",
+    "volume": "$6,939,468,504"
+     }
+	
+]
+}
