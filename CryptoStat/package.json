@@ -38,7 +38,8 @@
         "@ionic/app-scripts": "1.1.4",
         "typescript": "2.0.9"
     },
-    "description": "Ionic2Blank: An Ionic project",
+  "description": "Ionic2Blank: An Ionic project",
+  "config": { "ionic_source_map": "source-map" },
     "cordovaPlugins": [
         "cordova-plugin-whitelist",
         "cordova-plugin-console",
