@@ -6,11 +6,15 @@ import { MainPage } from '../pages/main/main';
 import { ApiProvider } from './../providers/api/json-api';
 import { ProtfolioPage } from '../pages/protfolio/protfolio';
 import { ModalContentPage } from '../pages/protfolio/modal/add-coin-modal';
+import { TabMainContentPage } from '../pages/tabs/main-tab';
+import { BasicPage as TabBasicPage } from '../pages/tabs/main-tab';
 
 
 @NgModule({
     declarations: [
         MyApp,
+        TabBasicPage,
+        TabMainContentPage,
         ProtfolioPage,
         ModalContentPage,
         MainPage
@@ -21,6 +25,8 @@ import { ModalContentPage } from '../pages/protfolio/modal/add-coin-modal';
     bootstrap: [IonicApp],
     entryComponents: [
         MyApp,
+        TabBasicPage,
+        TabMainContentPage,
         ProtfolioPage,
         ModalContentPage,
         MainPage

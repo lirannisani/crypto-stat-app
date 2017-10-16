@@ -5,6 +5,9 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 import { HomePage } from '../pages/home/home';
 import { MainPage } from '../pages/main/main';
 import { ProtfolioPage } from '../pages/protfolio/protfolio';
+import { TabMainContentPage } from '../pages/tabs/main-tab';
+import { BasicPage as TabBasicPage } from '../pages/tabs/main-tab';
+
 
 
 @Component({
@@ -13,7 +16,8 @@ import { ProtfolioPage } from '../pages/protfolio/protfolio';
 export class MyApp {
     
     //rootPage = MainPage;
-    rootPage = ProtfolioPage;
+   // rootPage = ProtfolioPage;
+    rootPage = TabBasicPage;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {

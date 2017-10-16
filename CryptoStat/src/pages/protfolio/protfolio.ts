@@ -3,6 +3,7 @@
 import { NavController } from 'ionic-angular';
 import { ModalController, Platform, NavParams, ViewController } from 'ionic-angular';
 import { ModalContentPage } from '../protfolio/modal/add-coin-modal';
+import { ApiProvider } from './../../providers/api/json-api';
 
 @Component({
     selector: 'protfolio-main',
@@ -10,12 +11,15 @@ import { ModalContentPage } from '../protfolio/modal/add-coin-modal';
 })
 export class ProtfolioPage {
 
-    constructor(public modalCtrl: ModalController) {
+    coins: any = [];
+
+    constructor(public modalCtrl: ModalController, public apiProvider: ApiProvider) {
+        this.coins = this.apiProvider.coinsDic;
     }
 
     openModal() {
 
-        let modal = this.modalCtrl.create(ModalContentPage);
+        let modal = this.modalCtrl.create(ModalContentPage, { coins: this.coins });
         modal.present();
     }
 

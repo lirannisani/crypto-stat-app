@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 export class ApiProvider {
 
     coins: any = [];
+    coinsDic: any = [];
     tmpCoins: any = [];
 
     constructor(public http: Http) { }
@@ -19,6 +20,10 @@ export class ApiProvider {
 
         this.http.get('assets/data/data1.json').map(res => res.json()).subscribe(data => {
             this.coins = data.coins;
+            this.coinsDic = this.coins.reduce(function (map, obj) {
+                map[obj.name] = obj;
+                return map;
+            }, {});
         }, (rej) => {
             console.error("Could not load local data", rej) 
             });

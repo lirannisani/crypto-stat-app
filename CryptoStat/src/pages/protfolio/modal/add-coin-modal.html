@@ -13,17 +13,18 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-    <ion-searchbar (ionInput)="getItems($event)" placeholder="Search..."></ion-searchbar>
     <ion-list radio-group>
-        <ion-item *ngFor="let item of items">
-            <ion-label>{{item[displayProperty]}}</ion-label>
-            <ion-radio [checked]="item === selectedItem" (click)="select(item)"></ion-radio>
+        <ion-item>
+            <ion-label>Coin</ion-label>
+            <ion-select [(ngModel)]="Ether" (ionChange)="onChange($event)" interface="popover">
+                <ion-option *ngFor="let coinName of coinsName">{{coinName}}</ion-option>
+            </ion-select>
         </ion-item>
     </ion-list>
     <ion-list>
         <ion-item>
             <ion-label>Price: </ion-label>
-            <ion-input type="number" [readonly]="true"></ion-input>
+            <ion-input [readonly]="true" [(ngModel)]="selectedCoinPrice"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>Amount: </ion-label>

@@ -16,16 +16,21 @@ export class ModalContentPage {
     selectedItem: any;
     searchQuery: string;
 
+    coinsName: any = [];
+    selectedCoinPrice: any  = 0;
+
     constructor(
         public platform: Platform,
         public params: NavParams,
         public viewCtrl: ViewController
     ) {
         this.initializeItems();
+        this.items = params.get('coins');
+        this.coinsName = Object.keys(this.items);
     }
 
     initializeItems() {
-        this.items = ["bitcoin", "eth", "ripple"];
+       // this.items = ["bitcoin", "eth", "ripple"];
     }
 
     getItems(ev: any) {
@@ -41,6 +46,11 @@ export class ModalContentPage {
                 return (item[this.displayProperty].toLowerCase().indexOf(val.toLowerCase()) > -1);
             });
         }
+    }
+
+    onChange(selectedValue: any) {
+        this.selectedCoinPrice = this.items[selectedValue].volume;
+        
     }
 
     dismiss() {
