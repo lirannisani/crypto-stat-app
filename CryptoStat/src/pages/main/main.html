@@ -26,7 +26,10 @@
         </ion-row>
 
         <ion-row wrap *ngFor="let coin of coins">
-            <ion-col> {{ coin.symbol }}</ion-col>
+            <ion-col>
+                <ion-img [src]="'https://s3.amazonaws.com/crypto-stat/Images/icons/' + coin.name.toLowerCase() + '.png'"></ion-img>
+                {{ coin.symbol }}
+            </ion-col>
             <ion-col> {{ coin.name }}</ion-col>
             <ion-col> {{ coin.price }}</ion-col>
             <!--<ion-col col-25> <button ion-button small color="danger" (click)="gotoDetails(res)"> Details</button></ion-col>-->
