@@ -28,15 +28,12 @@ export class MainPage {
             .then(data => {
                 console.log("then from api");
                 this.coins = data;
-                console.log("coinsss" + this.coins);
-                if (data != null) {
+               // if (data != null) {
                     //for (let i = 0; i < data.length; i++) {
                     //    console.log(JSON.stringify(data));
                     //}
-                } else {
-                    console.log('There are no products matching the selection.');
-                }
-            });
+              //  } 
+            }, () => console.log("An error ocuured"));
     }
 
     onLink(url: string) {
