@@ -11,10 +11,32 @@ import { ApiProvider } from './../../providers/api/json-api';
 export class MainPage {
 
     queryText: string = '';
-    coins: any = [];
+    coins: any;
 
     constructor(public navCtrl: NavController, public apiProvider: ApiProvider) {
-        this.apiProvider.getCoins();
+        this.getDataFromApi();
+      //  var x = this.apiProvider.getCoins();
+        //console.log("x: " + x);
+        //this.coins = x;
+        //console.log("this.coins: " + this.coins);
+
+    }
+
+    getDataFromApi() {
+        console.log("get from api");
+        this.apiProvider.load()
+            .then(data => {
+                console.log("then from api");
+                this.coins = data;
+                console.log("coinsss" + this.coins);
+                if (data != null) {
+                    //for (let i = 0; i < data.length; i++) {
+                    //    console.log(JSON.stringify(data));
+                    //}
+                } else {
+                    console.log('There are no products matching the selection.');
+                }
+            });
     }
 
     onLink(url: string) {
@@ -30,7 +52,7 @@ export class MainPage {
 
     ionViewWillEnter() {
         this.coins = this.apiProvider.coins;
-        console.log("coins2: " + this.coins);
+        console.log("coins3: " + this.coins);
     }
 
     onCancelSearchbar(searchbar) {

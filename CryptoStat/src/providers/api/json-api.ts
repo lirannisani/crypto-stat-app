@@ -2,14 +2,46 @@
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/from';
+import 'rxjs/Rx';
+
 @Injectable()
 export class ApiProvider {
 
-    coins: any = [];
+    coins: any;
     coinsDic: any = [];
     tmpCoins: any = [];
+    data: any;
 
     constructor(public http: Http) { }
+
+    load() {
+        console.log("enter load");
+        if (this.data) {
+            console.log("enter promise");
+
+            // already loaded data
+            return Promise.resolve(this.data);
+        }
+
+        // don't have the data yet
+        return new Promise(resolve => {
+            // We're using Angular HTTP provider to request the data,
+            // then on the response, it'll map the JSON data to a parsed JS object.
+            // Next, we process the data and resolve the promise with the new data.
+            this.http.get('http://94.75.240.154:9000/externl/get_coins_stats')
+                .map(res => res.json())
+                .subscribe(data => {
+                    // we've got back the raw data, now generate the core schedule data
+                    // and save the data for later reference
+                    console.log("dataL " + data);
+
+                    this.data = data;
+                    resolve(this.data);
+                });
+        });
+    }
 
     getCoins(): any {
 
@@ -18,12 +50,15 @@ export class ApiProvider {
         //    { 'name': 'eth', 'volume': '333322222' }
         //];
 
-        this.http.get('assets/data/data1.json').map(res => res.json()).subscribe(data => {
-            this.coins = data.coins;
-            this.coinsDic = this.coins.reduce(function (map, obj) {
+        this.http.get('http://94.75.240.154:9000/externl/get_coins_stats').map(res => res.json()).subscribe(data => {
+            this.coins = data;
+            this.coinsDic = data.reduce(function (map, obj) {
                 map[obj.name] = obj;
                 return map;
             }, {});
+
+            console.log("data: " + data);
+            return data;
         }, (rej) => {
             console.error("Could not load local data", rej) 
             });

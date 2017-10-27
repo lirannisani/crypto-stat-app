@@ -17,13 +17,19 @@
 </ion-header>>
 
 <ion-content class="outer-content speaker-list">
-    <ion-grid fixed>
+    <ion-grid>
+        
+        <ion-row wrap>
+            <ion-col> Symbol</ion-col>
+            <ion-col> Name </ion-col>
+            <ion-col> Price </ion-col>
+        </ion-row>
 
         <ion-row wrap *ngFor="let coin of coins">
-
-            <ion-col width-25> {{ coin.name }}</ion-col>
-            <ion-col width-25> {{ coin.volume }}</ion-col>
-            <ion-col col-25> <button ion-button small color="danger" (click)="gotoDetails(res)"> Details</button></ion-col>
+            <ion-col> {{ coin.symbol }}</ion-col>
+            <ion-col> {{ coin.name }}</ion-col>
+            <ion-col> {{ coin.price }}</ion-col>
+            <!--<ion-col col-25> <button ion-button small color="danger" (click)="gotoDetails(res)"> Details</button></ion-col>-->
         </ion-row>
     </ion-grid>
 
