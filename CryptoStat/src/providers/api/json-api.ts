@@ -12,6 +12,7 @@ export class ApiProvider {
     coins: any;
     coinsDic: any = [];
     tmpCoins: any = [];
+    protfolio: any;
     data: any;
 
     constructor(public http: Http) { }
@@ -38,6 +39,12 @@ export class ApiProvider {
                     console.log("dataL " + data);
 
                     this.data = data;
+                    this.coinsDic = data.reduce(function (map, obj) {
+                        console.log("map coin_name : " + obj.name);
+                        map[obj.name] = obj;
+                        return map;
+                    }, {});
+
                     resolve(this.data);
                 });
         });

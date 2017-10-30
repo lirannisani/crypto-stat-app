@@ -18,6 +18,8 @@ export class ModalContentPage {
 
     coinsName: any = [];
     selectedCoinPrice: any  = 0;
+    selectedCoinName: any = 0;
+    amount: any;
 
     constructor(
         public platform: Platform,
@@ -27,7 +29,7 @@ export class ModalContentPage {
         this.initializeItems();
         this.items = params.get('coins');
         this.coinsName = Object.keys(this.items);
-    }
+    }   
 
     initializeItems() {
        // this.items = ["bitcoin", "eth", "ripple"];
@@ -49,11 +51,18 @@ export class ModalContentPage {
     }
 
     onChange(selectedValue: any) {
-        this.selectedCoinPrice = this.items[selectedValue].volume;
-        
+        this.selectedCoinName = this.items[selectedValue].name;
+        this.selectedCoinPrice = this.items[selectedValue].price;
     }
 
     dismiss() {
         this.viewCtrl.dismiss();
+    }
+
+    openFilters() {
+        console.log("amount " + this.amount);
+        console.log("name " + this.selectedCoinName);
+        var coinDetails = { "name": this.selectedCoinName, "amount": this.amount };
+        this.viewCtrl.dismiss(coinDetails);
     }
 }
