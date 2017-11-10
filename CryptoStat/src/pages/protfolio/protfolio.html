@@ -1,19 +1,77 @@
 ﻿
 <ion-header>
     <ion-navbar>
-        <ion-title>Track coin</ion-title>
+        <ion-title>Protfolio</ion-title>
     </ion-navbar>
 </ion-header>
 <ion-content>
-    <ion-list>
-        <ion-item wrap *ngFor="let coin of protfolio">
-            <ion-avatar item-start>
-                <img src="https://s3.amazonaws.com/crypto-stat/Images/icons/bitcoin.png">
-            </ion-avatar>
-            <h2>Woody</h2>
-            <p>This town ain't big enough for the two of us!</p>
-            <ion-note item-end>3:43 pm</ion-note>
-        </ion-item>
-    </ion-list>
-        <button ion-button (click)="openModal()"> Add Coin</button>
+    <div class="ProtfolioContainer">
+        <div class="ProtfolioHeader">
+            <div class="HeaderLeftContainer">
+                <div class="TotalValueDetails">
+                    <div>
+                        <span>Total Value:</span>
+                        <div class="TotalValue">
+                            <span>{{totalValue}}$</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="HeaderRightContainer">
+                <div class="Change24Details">
+                    <div>
+                        <span>24h Change:</span>
+                        <div class="Change24Text">
+                            <span [ngClass]="[changeIn24Hour >= 0 ? 'greenText' : 'redText']">{{changeIn24Hour}}%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <ion-grid>
+                <div>
+                    <ion-row class="Row">
+                        <ion-col class="ColumnHeader"> Coin</ion-col>
+                        <ion-col class="ColumnHeader"> Amount</ion-col>
+                        <ion-col class="ColumnHeader"> 24 Change</ion-col>
+                        <!--<ion-col> Amount </ion-col>
+                <ion-col> 24 Change </ion-col>-->
+                    </ion-row>
+                </div>
+
+
+                <ion-row class="Row" *ngFor="let coin of protfolio">
+                    <ion-col style="text-align:left">
+                        <div>
+                            <ion-img [src]="'https://s3.amazonaws.com/crypto-stat/Images/icons/' + coin.name.toLowerCase() + '.png'"></ion-img>
+                            <div class="CoinSymbol">
+                                {{ coin.symbol }}
+                            </div>
+                        </div>
+
+                    </ion-col>
+                    <ion-col>
+                        <div>
+                            <div class="CoinPrice">
+                                {{ coin.price }}$
+                            </div>
+                            <div class="CoinAmount">
+                                {{ coin.amount }}
+                            </div>
+                        </div>
+                    </ion-col>
+                    <ion-col class="Change24">
+                        <span [ngClass]="[coin.change24 >= 0 ? 'greenText' : 'redText']">{{ coin.change24 }}%</span>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+
+        </div>
+        <div class="AddCoin">
+            <button ion-button (click)="openModal()"> Add Coin</button>
+        </div>
+
+    </div>
+
 </ion-content>

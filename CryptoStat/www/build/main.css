@@ -64726,3 +64726,89 @@ page-tutorial p {
 page-tutorial p b {
   color: #000000;
 }
+
+.BasicText, .TotalValueDetails, .Change24Details, .CoinSymbol, .CoinPrice, .CoinAmount, .Change24 {
+  font-family: 'Open Sans Condensed',sans-serif;
+}
+
+.ProtfolioContainer {
+  float: none;
+}
+
+.HeaderLeftContainer {
+  float: left;
+}
+
+.HeaderRightContainer {
+  float: right;
+}
+
+.TotalValueDetails {
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.TotalValue {
+  margin-top: 5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.Change24Details {
+  margin-top: 10px;
+  margin-right: 10px;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.Change24Text {
+  margin-top: 5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.greenText {
+  color: #32e948;
+}
+
+.redText {
+  color: #E93333;
+}
+
+.ColumnHeader {
+  background-color: #488aff;
+  color: white;
+}
+
+.Row {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e6;
+}
+
+.CoinSymbol, .CoinPrice, .CoinAmount {
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.CoinAmount {
+  font-weight: normal;
+}
+
+.Change24 {
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.AddCoin {
+  display: table;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
