@@ -6,6 +6,7 @@ import { MainPage } from '../pages/main/main';
 import { ApiProvider } from './../providers/api/json-api';
 import { ProtfolioPage } from '../pages/protfolio/protfolio';
 import { ModalContentPage } from '../pages/protfolio/modal/add-coin-modal';
+import { ModalSearchCoinPage } from '../pages/protfolio/modal/search-coin-modal';
 import { TabMainContentPage } from '../pages/tabs/main-tab';
 import { BasicPage as TabBasicPage } from '../pages/tabs/main-tab';
 
@@ -17,6 +18,7 @@ import { BasicPage as TabBasicPage } from '../pages/tabs/main-tab';
         TabMainContentPage,
         ProtfolioPage,
         ModalContentPage,
+        ModalSearchCoinPage,
         MainPage
     ],
     imports: [
@@ -29,6 +31,7 @@ import { BasicPage as TabBasicPage } from '../pages/tabs/main-tab';
         TabMainContentPage,
         ProtfolioPage,
         ModalContentPage,
+        ModalSearchCoinPage,
         MainPage
     ],
     providers: [

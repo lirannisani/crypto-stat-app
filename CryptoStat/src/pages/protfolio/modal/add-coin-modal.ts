@@ -2,6 +2,7 @@
 
 import { NavController } from 'ionic-angular';
 import { ModalController, Platform, NavParams, ViewController } from 'ionic-angular';
+import { ModalSearchCoinPage } from '../modal/search-coin-modal';
 
 @Component({
     selector: 'add-coin-modal',
@@ -17,22 +18,24 @@ export class ModalContentPage {
     searchQuery: string;
 
     coinsName: any = [];
-    selectedCoinPrice: any  = 0;
+    selectedCoinPrice: any = 0;
     selectedCoinName: any = 0;
     amount: any;
 
     constructor(
+        public modalCtrl: ModalController,
         public platform: Platform,
         public params: NavParams,
         public viewCtrl: ViewController
     ) {
         this.initializeItems();
         this.items = params.get('coins');
+
         this.coinsName = Object.keys(this.items);
-    }   
+    }
 
     initializeItems() {
-       // this.items = ["bitcoin", "eth", "ripple"];
+        // this.items = ["bitcoin", "eth", "ripple"];
     }
 
     getItems(ev: any) {
@@ -53,6 +56,20 @@ export class ModalContentPage {
     onChange(selectedValue: any) {
         this.selectedCoinName = this.items[selectedValue].name;
         this.selectedCoinPrice = this.items[selectedValue].price;
+    }
+
+    selectCoinClick() {
+        console.log("click to open search modal");
+
+        var array_values = new Array();
+
+        for (var key of Object.keys(this.items)) {
+            array_values.push(this.items[key]);
+        }
+
+
+        let modal = this.modalCtrl.create(ModalSearchCoinPage, { coins: array_values });
+        modal.present();
     }
 
     dismiss() {

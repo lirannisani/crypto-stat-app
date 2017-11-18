@@ -11,20 +11,22 @@ export class ApiProvider {
 
     coins: any;
     coinsDic: any = [];
+    marketDic: any = [];
     tmpCoins: any = [];
     protfolio: any;
     data: any;
+    marketData: any;
 
     constructor(public http: Http) { }
 
     load() {
         console.log("enter load");
-        if (this.data) {
-            console.log("enter promise");
+        //if (this.data) {
+        //    console.log("enter promise");
 
-            // already loaded data
-            return Promise.resolve(this.data);
-        }
+        //    // already loaded data
+        //    return Promise.resolve(this.data);
+        //}
 
         // don't have the data yet
         return new Promise(resolve => {
@@ -49,6 +51,38 @@ export class ApiProvider {
                 });
         });
     }
+
+    //GetMarketByCoin(name: string): any {
+    //    console.log("Enter GetMarketByCoin: " + name);
+
+    //    // don't have the data yet
+    //    return new Promise(resolve => {
+    //        // We're using Angular HTTP provider to request the data,
+    //        // then on the response, it'll map the JSON data to a parsed JS object.
+    //        // Next, we process the data and resolve the promise with the new data.
+    //        this.http.get('http://94.75.240.154:9000/externl/' + name.toLowerCase() +'/get_markets')
+    //            .map(res => res.json())
+    //            .subscribe(data => {
+    //                // we've got back the raw data, now generate the core schedule data
+    //                // and save the data for later reference
+    //                console.log("data-market " + data);
+
+    //                this.marketData = data; //remove?
+    //                this.marketDic = data.reduce(function (map, obj) {
+    //                    console.log("map coin_name : " + obj.name);
+    //                    map[obj.name] = obj;
+    //                    return map;
+    //                }, {});
+
+    //                resolve(this.data);
+    //            });
+    //    });
+    //}
+
+    getCoinsDetails(): any {
+
+    }
+
 
     getCoins(): any {
 

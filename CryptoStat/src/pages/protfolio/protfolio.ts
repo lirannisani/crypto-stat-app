@@ -19,6 +19,13 @@ export class ProtfolioPage {
 
     constructor(public modalCtrl: ModalController, public apiProvider: ApiProvider) {
         this.coins = this.apiProvider.coinsDic;
+        this.InitProtfolio();
+        this.CalcTotalAndChange();
+    }
+
+    InitProtfolio() {
+        this.protfolio = [];
+
         var bitcoinDetails = this.coins["Bitcoin"];
         var ethDetails = this.coins["Ethereum"];
         var bitcoinCashDetails = this.coins["Bitcoin Cash"];
@@ -59,45 +66,41 @@ export class ProtfolioPage {
             change24: iotaDetails.change24
         };
 
-
         this.protfolio.push(bitcoin);
         this.protfolio.push(eth);
         this.protfolio.push(bitcoinCash);
         this.protfolio.push(iot);
-
-        this.CalcTotalAndChange();
     }
 
     CalcTotalAndChange() {
         for (var coinInProtfolio of this.protfolio) {
-            console.log("price: " + coinInProtfolio.price);
-            console.log("priceFixed: " + coinInProtfolio.price.toFixed(2));
-
             this.totalValue += coinInProtfolio.price * coinInProtfolio.amount;
-            console.log("change24: " + coinInProtfolio.change24.toFixed(2));
-            console.log("change24 before add: " + this.changeIn24Hour);
             this.changeIn24Hour += parseFloat(coinInProtfolio.change24);
-
-            console.log("Total change24:" + this.changeIn24Hour);
         }
 
         this.changeIn24Hour = parseFloat(Number(this.changeIn24Hour).toFixed(2));
         this.totalValue = parseFloat(Number(this.totalValue).toFixed(2));
     }
 
+    doRefresh(refresher) {
+        this.apiProvider.load().then(res => {
+            console.log("finish load");
+            this.InitProtfolio();
+            refresher.complete();
+        });
+    }
     openModal() {
+        let modal = this.modalCtrl.create(ModalContentPage, { coins: this.coins });
 
-        //let modal = this.modalCtrl.create(ModalContentPage, { coins: this.coins });
+        // Getting data from the modal:
+        modal.onDidDismiss(data => {
+            console.log('MODAL DATA', data);
+            this.protfolio.push(data);
+            console.log('after MODAL DATA', data);
 
-        //// Getting data from the modal:
-        //modal.onDidDismiss(data => {
-        //    console.log('MODAL DATA', data);
-        //    this.protfolio.push(data);
-        //    console.log('after MODAL DATA', data);
+        });
 
-        //});
-
-        //modal.present();
+        modal.present();
     }
 
     onLink(url: string) {
