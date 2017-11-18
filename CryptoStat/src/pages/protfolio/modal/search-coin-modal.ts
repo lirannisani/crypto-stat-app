@@ -48,4 +48,9 @@ export class ModalSearchCoinPage {
 
         return result;
     };
+
+    select_item(coin) {
+        console.log("select item" + coin.name);
+        this.viewCtrl.dismiss(coin);
+    }
 }

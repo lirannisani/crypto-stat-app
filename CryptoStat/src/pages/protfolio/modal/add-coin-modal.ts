@@ -18,6 +18,7 @@ export class ModalContentPage {
     searchQuery: string;
 
     coinsName: any = [];
+    selectCoin: any;
     selectedCoinPrice: any = 0;
     selectedCoinName: any = 0;
     amount: any;
@@ -68,8 +69,18 @@ export class ModalContentPage {
         }
 
 
-        let modal = this.modalCtrl.create(ModalSearchCoinPage, { coins: array_values });
-        modal.present();
+        let selectCoinModal = this.modalCtrl.create(ModalSearchCoinPage, { coins: array_values });
+
+        selectCoinModal.onDidDismiss(data => {
+            console.log('MODAL DATA', data);
+            this.selectCoin = data;
+            this.selectedCoinPrice = this.selectCoin.price;
+            this.selectedCoinName = this.selectCoin.name;
+            console.log('after MODAL DATA', data);
+
+        });
+
+        selectCoinModal.present();
     }
 
     dismiss() {

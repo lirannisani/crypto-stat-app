@@ -22,7 +22,7 @@
 </ion-header>
 <ion-content>
     <ion-list>
-        <ion-item *ngFor="let coin of ShownCoins">
+        <ion-item *ngFor="let coin of ShownCoins" (click)='select_item(coin)'>
             <div>
                 <img [src]="'https://s3.amazonaws.com/crypto-stat/Images/icons/' + coin.name.toLowerCase() + '.png'" width="20" height="20">
                 <span>{{ coin.name }}</span>

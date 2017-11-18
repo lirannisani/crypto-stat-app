@@ -18,17 +18,18 @@
             <ion-label>Coin</ion-label>
             <ion-select [(ngModel)]="selectedCoinName" (ionChange)="onChange($event)" interface="popover">
                 <ion-option *ngFor="let coinName of coinsName">{{coinName}}</ion-option>
-                <!--<img [src]="'https://s3.amazonaws.com/crypto-stat/Images/icons/' + coinName.toLowerCase() + '.png'" width="20" height="20">-->
+
             </ion-select>
         </ion-item>
     </ion-list>
     <ion-list>
         <ion-item>
             <ion-label>Price: </ion-label>
-            <ion-input [readonly]="true" [(ngModel)]="selectedCoinPrice"></ion-input>
+            <ion-input [readonly]="true" [(ngModel)]="selectedCoinPrice">{{selectedCoinPrice}}</ion-input>
         </ion-item>
         <ion-item>
-            <ion-label (click)="selectCoinClick()">Price1: </ion-label>
+            <ion-label (click)="selectCoinClick()">Currency: </ion-label>
+            <span>{{ selectedCoinName }}</span>
         </ion-item>
         <ion-item>
             <ion-label>Amount: </ion-label>
